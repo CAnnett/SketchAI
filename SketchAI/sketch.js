@@ -1,14 +1,45 @@
 const len = 784;
 const total_data = 1000;
 
-const CAT = 0;
-const RAINBOW = 1;
-const TRAIN = 2;
+// const CAT = 0;
+// const RAINBOW = 1;
+// const TRAIN = 2;
 
-categories = ["cat", "rainbow", "train"];
-categories2 = ["bee", "bread", "cat", "crab", "dog", "dragon", "fish", "flower", "frog", "hat", "horse", "knife", "leaf",
+const BEE = 0;
+const BREAD = 1;
+const CAT = 2;
+const CRAB = 3;
+const DOG = 4;
+const DRAGON = 5;
+const FISH = 6;
+const FLOWER = 7;
+const FROG = 8;
+const HAT = 9;
+const HORSE = 10;
+const KNIFE = 11;
+const LEAF = 12;
+const LOLLIPOP = 13;
+const MONKEY = 14;
+const MUG = 15;
+const MUSHROOM = 16;
+const PANDA = 17;
+const PIG = 18;
+const RABBIT = 19;
+const RAINBOW = 20;
+const SCISSORS = 21;
+const SHOES = 22;
+const SNAIL = 23;
+const STAR = 24;
+const SWORD = 25;
+const TRAIN = 26;
+const TREE = 27;
+const UMBRELLA = 28;
+const WINEGLASS = 29;
+
+//categories = ["cat", "rainbow", "train"];
+var categories = ["bee", "bread", "cat", "crab", "dog", "dragon", "fish", "flower", "frog", "hat", "horse", "knife", "leaf",
               "lollipop", "monkey", "mug", "mushroom", "panda", "pig", "rabbit", "rainbow", "scissors", "shoes", "snail",
-              "star", "sword", "train", "tree", "umbrella", "winglass"];
+              "star", "sword", "train", "tree", "umbrella", "wineglass"];
 
 let nn;
 
@@ -112,54 +143,108 @@ function setup() {
   createCanvas(280, 280);
   background(255);
 
-  // prepData(bees, bees_data);
-  // prepData(bread, bread_data);
-  // prepData(cats, cats_data);
-  // prepData(crabs, crabs_data);
-  // prepData(dogs, dogs_data);
-  // prepData(dragons, dragons_data);
-  // prepData(fish, fish_data);
-  // prepData(flowers, flowers_data);
-  // prepData(frogs, frogs_data);
-  // prepData(hats, hats_data);
-  // prepData(horses, horses_data);
-  // prepData(knives, knives_data);
-  // prepData(leaves, leaves_data);
-  // prepData(lollipops, lollipops_data);
-  // prepData(monkeys, monkeys_data);
-  // prepData(mugs, mugs_data);
-  // prepData(mushrooms, mushrooms_data);
-  // prepData(pandas, pandas_data);
-  // prepData(pigs, pigs_data);
-  // prepData(rabbits, rabbits_data);
-  // prepData(rainbows, rainbows_data);
-  // prepData(scissors, scissors_data);
-  // prepData(shoes, shoes_data);
-  // prepData(snails, snails_data);
-  // prepData(stars, stars_data);
-  // prepData(swords, swords_data);
-  // prepData(trains, trains_data);
-  // prepData(trees, trees_data);
-  // prepData(umbrellas, umbrellas_data);
-  // prepData(wineglass, wineglass_data);
-
+  prepData(bees, bees_data, BEE);
+  prepData(bread, bread_data, BREAD);
   prepData(cats, cats_data, CAT);
-  prepData(trains, trains_data, TRAIN);
+  prepData(crabs, crabs_data, CRAB);
+  prepData(dogs, dogs_data, DOG);
+  prepData(dragons, dragons_data, DRAGON);
+  prepData(fish, fish_data, FISH);
+  prepData(flowers, flowers_data, FLOWER);
+  prepData(frogs, frogs_data, FROG);
+  prepData(hats, hats_data, HAT);
+  prepData(horses, horses_data, HORSE);
+  prepData(knives, knives_data, KNIFE);
+  prepData(leaves, leaves_data, LEAF);
+  prepData(lollipops, lollipops_data, LOLLIPOP);
+  prepData(monkeys, monkeys_data, MONKEY);
+  prepData(mugs, mugs_data, MUG);
+  prepData(mushrooms, mushrooms_data, MUSHROOM);
+  prepData(pandas, pandas_data, PANDA);
+  prepData(pigs, pigs_data, PIG);
+  prepData(rabbits, rabbits_data, RABBIT);
   prepData(rainbows, rainbows_data, RAINBOW);
+  prepData(scissors, scissors_data, SCISSORS);
+  prepData(shoes, shoes_data, SHOES);
+  prepData(snails, snails_data, SNAIL);
+  prepData(stars, stars_data, STAR);
+  prepData(swords, swords_data, SWORD);
+  prepData(trains, trains_data, TRAIN);
+  prepData(trees, trees_data, TREE);
+  prepData(umbrellas, umbrellas_data, UMBRELLA);
+  prepData(wineglass, wineglass_data, WINEGLASS);
+
+  // prepData(cats, cats_data, CAT);
+  // prepData(trains, trains_data, TRAIN);
+  // prepData(rainbows, rainbows_data, RAINBOW);
 
   // Creating the Neural Network
-  nn = new NeuralNetwork(784, 64, 3);
+  nn = new NeuralNetwork(784, 64, 30);
 
   // Creating a training set
   let training = [];
+  training = training.concat(bees.training);
+  training = training.concat(bread.training);
   training = training.concat(cats.training);
+  training = training.concat(crabs.training);
+  training = training.concat(dogs.training);
+  training = training.concat(dragons.training);
+  training = training.concat(fish.training);
+  training = training.concat(flowers.training);
+  training = training.concat(frogs.training);
+  training = training.concat(hats.training);
+  training = training.concat(horses.training);
+  training = training.concat(knives.training);
+  training = training.concat(leaves.training);
+  training = training.concat(lollipops.training);
+  training = training.concat(monkeys.training);
+  training = training.concat(mugs.training);
+  training = training.concat(mushrooms.training);
+  training = training.concat(pandas.training);
+  training = training.concat(pigs.training);
+  training = training.concat(rabbits.training);
   training = training.concat(rainbows.training);
+  training = training.concat(scissors.training);
+  training = training.concat(shoes.training);
+  training = training.concat(snails.training);
+  training = training.concat(stars.training);
+  training = training.concat(swords.training);
   training = training.concat(trains.training);
+  training = training.concat(trees.training);
+  training = training.concat(umbrellas.training);
+  training = training.concat(wineglass.training);
 
   let testing = [];
+  testing = testing.concat(bees.testing);
+  testing = testing.concat(bread.testing);
   testing = testing.concat(cats.testing);
+  testing = testing.concat(crabs.testing);
+  testing = testing.concat(dogs.testing);
+  testing = testing.concat(dragons.testing);
+  testing = testing.concat(fish.testing);
+  testing = testing.concat(flowers.testing);
+  testing = testing.concat(frogs.testing);
+  testing = testing.concat(hats.testing);
+  testing = testing.concat(horses.testing);
+  testing = testing.concat(knives.testing);
+  testing = testing.concat(leaves.testing);
+  testing = testing.concat(lollipops.testing);
+  testing = testing.concat(monkeys.testing);
+  testing = testing.concat(mugs.testing);
+  testing = testing.concat(mushrooms.testing);
+  testing = testing.concat(pandas.testing);
+  testing = testing.concat(pigs.testing);
+  testing = testing.concat(rabbits.testing);
   testing = testing.concat(rainbows.testing);
+  testing = testing.concat(scissors.testing);
+  testing = testing.concat(shoes.testing);
+  testing = testing.concat(snails.testing);
+  testing = testing.concat(stars.testing);
+  testing = testing.concat(swords.testing);
   testing = testing.concat(trains.testing);
+  testing = testing.concat(trees.testing);
+  testing = testing.concat(umbrellas.testing);
+  testing = testing.concat(wineglass.testing);
 
   let trainButton = select('#train');
   let epochCounter = 0;
@@ -193,13 +278,28 @@ function setup() {
     let guess = nn.predict(inputs);
     let m = max(guess);
     let classification = guess.indexOf(m);
+    let finalguess = categories[classification];
     console.log("Guess:" + categories[classification]);
+    if (finalguess === drawprompt){
+      console.log("I got it right!");
+    }if (finalguess != drawprompt) {
+      console.log("L");
+    }
+    
   });
 
   let clearButton = select('#clearcanvas');
   clearButton.mousePressed(function() {
     background(255);
   })
+
+  function random_prompt(categories){
+    return categories[Math.floor(Math.random()*categories.length)];
+  }
+  
+  let drawprompt = random_prompt(categories);
+  document.getElementById("drawprompt").innerHTML = drawprompt;
+  console.log(drawprompt);
 
   // for ( let i = 1; i < 6; i++) {
   //   trainEpoch(training);
