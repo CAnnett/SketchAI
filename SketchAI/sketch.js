@@ -1,10 +1,6 @@
 const len = 784;
 const total_data = 1000;
 
-// const CAT = 0;
-// const RAINBOW = 1;
-// const TRAIN = 2;
-
 const BEE = 0;
 const BREAD = 1;
 const CAT = 2;
@@ -36,7 +32,6 @@ const TREE = 27;
 const UMBRELLA = 28;
 const WINEGLASS = 29;
 
-//categories = ["cat", "rainbow", "train"];
 var categories = ["bee", "bread", "cat", "crab", "dog", "dragon", "fish", "flower", "frog", "hat", "horse", "knife", "leaf",
               "lollipop", "monkey", "mug", "mushroom", "panda", "pig", "rabbit", "rainbow", "scissors", "shoes", "snail",
               "star", "sword", "train", "tree", "umbrella", "wineglass"];
@@ -174,10 +169,6 @@ function setup() {
   prepData(umbrellas, umbrellas_data, UMBRELLA);
   prepData(wineglass, wineglass_data, WINEGLASS);
 
-  // prepData(cats, cats_data, CAT);
-  // prepData(trains, trains_data, TRAIN);
-  // prepData(rainbows, rainbows_data, RAINBOW);
-
   // Creating the Neural Network
   nn = new NeuralNetwork(784, 64, 30);
 
@@ -309,17 +300,4 @@ function setup() {
     console.log(drawprompt);
   })
 
-  // for ( let i = 1; i < 6; i++) {
-  //   trainEpoch(training);
-  //   console.log("Trained for " + i + " Epoch");
-  //   console.log("testing result:");
-
-  //   let percent = testAll(testing);
-  //   console.log("% Correct: " + percent);
-  // }
- 
-
-
-
-  
 }
