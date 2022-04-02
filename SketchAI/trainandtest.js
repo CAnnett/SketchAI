@@ -1,7 +1,13 @@
-//Look into adding a softmax layer
 //Also look into making it asynchronous so it doesn't freeze up the whole site
 
-function trainEpoch (training) {
+function softmax(logits) {
+  const maxLogit = Math.max(...logits);
+  const scores = logits.map(l => Math.exp(l - maxLogit));
+  const denom = scores.reduce((a, b) => a + b);
+  return scores.map(s => s / denom);
+}
+
+async function trainEpoch (training) {
     console.log("training...")
     shuffle(training, true);
   
@@ -15,7 +21,6 @@ function trainEpoch (training) {
       let targets = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
       //let targets = [0,0,0];
       targets[label] = 1;
-  
       nn.train(inputs, targets);
   
     }

@@ -249,9 +249,12 @@ function setup() {
   let trainButton = select('#train');
   let epochCounter = 0;
   trainButton.mousePressed(function() {
-    trainEpoch(training);
-    epochCounter++;
-    console.log("Trained for " + epochCounter + " Epoch");
+    setTimeout(function(){
+      trainEpoch(training);
+      epochCounter++;
+      console.log("Trained for " + epochCounter + " Epoch");
+    }, 0);
+    
   });
 
   let testButton = select('#test');
@@ -265,7 +268,6 @@ function setup() {
     let inputs = [];
     let img = get();
     img.resize(28,28);
-    //console.log(img);
     img.loadPixels();
 
     for (let i = 0; i < len; i++){
@@ -273,7 +275,6 @@ function setup() {
       inputs[i] = (255 - bright) / 255.0;
 
     }
-    //console.log(inputs);
 
     let guess = nn.predict(inputs);
     let m = max(guess);
@@ -300,6 +301,13 @@ function setup() {
   let drawprompt = random_prompt(categories);
   document.getElementById("drawprompt").innerHTML = drawprompt;
   console.log(drawprompt);
+
+  let promptButton = select('#promptbutton');
+  promptButton.mousePressed(function() {
+    drawprompt = random_prompt(categories);
+    document.getElementById("drawprompt").innerHTML = drawprompt;
+    console.log(drawprompt);
+  })
 
   // for ( let i = 1; i < 6; i++) {
   //   trainEpoch(training);
