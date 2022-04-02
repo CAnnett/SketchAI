@@ -73,7 +73,8 @@ class ActivationFunction {
       output.map(this.activation_function.func);
   
       // Sending back to the caller!
-      return output.toArray();
+      return softmax(output.toArray());
+      
     }
   
     setLearningRate(learning_rate = 0.1) {
