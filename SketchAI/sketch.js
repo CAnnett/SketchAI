@@ -135,7 +135,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(280, 280);
+  createCanvas(420, 420);
   background(255);
 
   prepData(bees, bees_data, BEE);
@@ -239,11 +239,13 @@ function setup() {
 
   let trainButton = select('#train');
   let epochCounter = 0;
+  document.getElementById("trained").innerHTML = " " + epochCounter + " epochs";
   trainButton.mousePressed(function() {
     setTimeout(function(){
       trainEpoch(training);
       epochCounter++;
       console.log("Trained for " + epochCounter + " Epoch");
+      document.getElementById("trained").innerHTML = " " + epochCounter + " epochs";
     }, 0);
     
   });
@@ -252,6 +254,7 @@ function setup() {
   testButton.mousePressed(function() {
     let percent = testAll(testing);
     console.log("Percent Correct: " + nf(percent,2,2) + "%" );
+    document.getElementById("tested").innerHTML = " " + nf(percent,2,2) + "%";
   });
 
   let guessButton = select('#guess');
@@ -272,11 +275,13 @@ function setup() {
     let classification = guess.indexOf(m);
     let finalguess = categories[classification];
     console.log("Guess:" + categories[classification]);
+    document.getElementById("guessed").innerHTML = finalguess;
     if (finalguess === drawprompt){
-      console.log("I got it right!");
+      document.getElementById("result").innerHTML = "I got it right! :)";
     }if (finalguess != drawprompt) {
-      console.log("L");
+      document.getElementById("result").innerHTML = "Aw I got it wrong :(";
     }
+    
     
   });
 

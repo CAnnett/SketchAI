@@ -5,19 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SketchAI</title>
-  <style>
-    body {
-      background-color: #AAA;
-    }
-    button {
-      font-size: 24pt;
-      margin: 10px;
-	  }
-    p{
-      font-size: 24pt;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
   <script src="libraries/p5.js"></script>
   <!-- <script src="../addons/p5.sound.js"></script> -->
   <script src="dataprep.js"></script>
@@ -30,14 +18,26 @@
 </head>
 
 <body>
-  <button id = "train">train</button>
-  <button id = "test">test</button>
-  <button id = "guess">guess</button>
-  <button id = "clearcanvas">clear</button>
-  <button id = "promptbutton">New Prompt</button>
-  <p>Your prompt is: <span id="drawprompt"></span></p>
-  <main>
-  </main>
+  <div class="buttons">
+    <button id = "train">Train</button>
+    <button id = "test">Test</button>
+    <button id = "guess">Guess</button>
+    <button id = "clearcanvas">Clear Canvas</button>
+    <button id = "promptbutton">New Prompt</button>
+</div>
+<div class="flex-container">
+  <div id = "main" class="flex-child">
+    <p>Your prompt is: <span id="drawprompt" class="prompt"></span></p>
+    <main>
+    </main>
+  </div>
+<div class="flex-child">
+  <p>My guess is: <span id="guessed" class="prompt"></span></p>
+  <p>Result:<span id="result" class="prompt"></span></p>
+  <p>Trained for:<span id="trained"></spain></p>
+  <p>Percentage correct:<span id="tested"></span></p>
+</div>
+</div>
 </body>
 
 </html>
