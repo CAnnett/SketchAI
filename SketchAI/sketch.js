@@ -1,5 +1,5 @@
 const len = 784;
-const total_data = 1000;
+const total_data = 1500;
 
 const BEE = 0;
 const BREAD = 1;
