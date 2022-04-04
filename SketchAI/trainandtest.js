@@ -26,6 +26,12 @@ async function trainEpoch (training) {
     }
   }
 
+async function fiveEpochs (training) {
+  for (let i=0; i < 5; i ++){
+      trainEpoch(training);
+  }
+}
+
 function testAll(testing) {
     let correct = 0;
     console.log("testing...");

@@ -250,6 +250,17 @@ function setup() {
     
   });
 
+  let fiveButton = select('#fiveTrain');
+  fiveButton.mousePressed(function() {
+    setTimeout(function(){
+      fiveEpochs(training);
+      epochCounter = epochCounter + 5;
+      console.log("Trained for " + epochCounter + " Epoch");
+      document.getElementById("trained").innerHTML = " " + epochCounter + " epochs";
+    }, 0);
+    
+  });
+
   let testButton = select('#test');
   testButton.mousePressed(function() {
     let percent = testAll(testing);
