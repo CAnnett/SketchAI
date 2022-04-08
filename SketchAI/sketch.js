@@ -237,6 +237,12 @@ function setup() {
   testing = testing.concat(umbrellas.testing);
   testing = testing.concat(wineglass.testing);
 
+  if (sessionStorage.getItem('nn') === null){
+    sessionStorage.setItem('nn', nn.serialize())
+  } else{
+    nn = NeuralNetwork.deserialize(sessionStorage.getItem('nn'));
+  }
+
   let trainButton = select('#train');
   let epochCounter = 0;
   document.getElementById("trained").innerHTML = " " + epochCounter + " epochs";
@@ -307,7 +313,7 @@ function setup() {
   
   let drawprompt = random_prompt(categories);
   document.getElementById("drawprompt").innerHTML = drawprompt;
-  console.log(drawprompt);
+  //console.log(drawprompt);
 
   let promptButton = select('#promptbutton');
   promptButton.mousePressed(function() {
@@ -316,4 +322,24 @@ function setup() {
     console.log(drawprompt);
   })
 
+  let saveButton = select('#savenn');
+  saveButton.mousePressed(function() {
+    sessionStorage.setItem('nn', nn.serialize())
+    console.log(sessionStorage.getItem('nn'));
+    let saveNN = sessionStorage.getItem('nn');
+    save(saveNN, 'nn.json');
+  })
+
+  let loadButton = select('#loadnn');
+  loadButton.mousePressed(function() {
+    nn = NeuralNetwork.deserialize(sessionStorage.getItem('nn'));
+  })
+
 }
+
+var p5 = new p5();
+let shuffledCategories = shuffle(categories);
+  let gamePrompts = [];
+  for (let i = 0; i < 5; i++){
+      gamePrompts[i] = shuffledCategories[i];
+  }
