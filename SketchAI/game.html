@@ -17,12 +17,8 @@
   <script src="sketch.js"></script>
   <script src="lib/nn.js"></script>
   <script src="lib/matrix.js"></script>
-  <script>
-    var tag = document.createElement("script");
-    tag.src = "game.js";
-    document.getElementsByTagName("head")[0].appendChild(tag);
- </script> 
-  
+  <script src="game.js"></script>
+  <script src="nn.json"></script>
 </head>
 
 <body>
@@ -51,18 +47,85 @@
   
   <p></p>
   <div class="container">
-    <div class="row">
-        
+    <div class="row" id="mainGame">
         <div class="col-sm">
             <button id = "play" onclick="newPrompt(gamePrompts)">Play Game</button>
-            <p class="para">Your prompt is: <span id="currentprompt" class="prompt"></span></p>
+            <p class="para" id="prompt">Your prompt is: <span id="currentprompt" class="prompt"></span></p>
+            <div id="canvas">
             <main>
             </main>
+          </div>
         </div>
         <div class="col-sm">
             <button id="submit" onclick="guessSketch()">Submit</button>
             <button id = "clearcanvas">Clear Canvas</button>
         </div>
+  </div>
+
+  <div class="container" id="afterGame" style="display:none;">
+    <div class="row">
+      <div class="col-12" style="text-align: center;">
+        <p class="para">You finished!</p>
+        <p class="para">The final score was: <span id="score"></span>/5</p>
+      </div>
+    <!-- result cards -->
+    <div class="center">
+    <div class="row justify-content-md-center" style="text-align: center;">
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img1" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt1"></span></h5>
+            <h4>Guess: <span id="guess1"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img2" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt2"></span></h5>
+            <h4>Guess: <span id="guess2"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img3" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt3"></span></h5>
+            <h4>Guess: <span id="guess3"></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="center">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-6">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img4" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt4"></span></h5>
+            <h4>Guess: <span id="guess4"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img5" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt5"></span></h5>
+            <h4>Guess: <span id="guess5"></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
 
 
@@ -77,9 +140,9 @@
   <div hidden>
     <button id = "train" >Train</button>
             <button id = "fiveTrain">Train for 5</button>
-            <button id = "test">Test</button>
-            <button id = "guess">Guess</button>
             
+            <button id = "guess">Guess</button>
+            <button id = "test">Test</button>
             <button id = "promptbutton">New Prompt</button>
             <p class="para">Your prompt is: <span id="drawprompt" class="prompt"></span></p>
     
