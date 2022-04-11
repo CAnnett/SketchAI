@@ -27,9 +27,14 @@ async function trainEpoch (training) {
   }
 
 async function fiveEpochs (training) {
-  for (let i=0; i < 5; i ++){
+  for (let i=0; i < 50; i ++){
       trainEpoch(training);
   }
+}
+
+ 
+async function trainOnLoad(training) {
+  trainEpoch(training);
 }
 
 function testAll(testing) {

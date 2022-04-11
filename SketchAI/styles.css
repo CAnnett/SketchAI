@@ -1,23 +1,16 @@
 body {
     background-color: rgb(202, 190, 228);
 }
+.header {
+    overflow: hidden;
+    background-color: rgb(241, 242, 250);
+    padding: 20px 10px;
+  }
 
 .center {
     margin: auto;
     width: 90%;
 }
-.flex-container {
-    display: flex;
-}
-
-.flex-child {
-    flex: 1;
-    border: 2px;
-}  
-
-.flex-child:first-child {
-    margin-right: 20px;
-} 
   
 button {
     display:inline-block;
@@ -40,13 +33,13 @@ button:hover{
     border-color: rgb(29, 9, 34);
     }
 
-p{
-    font-size: 24pt;
+.para{
+    font-size: 20pt;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .prompt{
-    font-size: 24pt;
+    font-size: 20pt;
     background-color: rgb(235, 232, 241);
     border-radius: 2em;
     padding:0.1em 0.5em;
