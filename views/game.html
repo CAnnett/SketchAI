@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SketchAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="./libraries/p5.js"></script>
+  <script src="javascripts/dataprep.js"></script>
+  <script src="javascripts/trainandtest.js"></script>
+	<script src="javascripts/loadbinary.js"></script>
+  <script src="javascripts/canvas.js"></script>
+  <script src="javascripts/sketch.js"></script>
+  <script src="javascripts/nn.js"></script>
+	<script src="javascripts/matrix.js"></script>
+    <script src="javascripts/game.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">SketchAI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Play</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/test">Test</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  
+  
+  <p></p>
+  <div class="container">
+    <div class="row" id="mainGame">
+        <div class="col-sm">
+            <button id = "play" onclick="newPrompt(gamePrompts)">Play Game</button>
+            <p class="para" id="prompt">Your prompt is: <span id="currentprompt" class="prompt"></span></p>
+            <div id="canvas">
+            <main>
+            </main>
+          </div>
+        </div>
+        <div class="col-sm">
+            <button id="submit" onclick="guessSketch()">Submit</button>
+            <button id = "clearcanvas">Clear Canvas</button>
+        </div>
+  </div>
+
+  <div class="container" id="afterGame" style="display:none;">
+    <div class="row">
+      <div class="col-12" style="text-align: center;">
+        <p class="para">You finished!</p>
+        <p class="para">The final score was: <span id="score"></span>/5</p>
+      </div>
+    <!-- result cards -->
+    <div class="center">
+    <div class="row justify-content-md-center" style="text-align: center;">
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img1" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt1"></span></h5>
+            <h4>Guess: <span id="guess1"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img2" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt2"></span></h5>
+            <h4>Guess: <span id="guess2"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img3" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt3"></span></h5>
+            <h4>Guess: <span id="guess3"></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="center">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-6">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img4" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt4"></span></h5>
+            <h4>Guess: <span id="guess4"></span></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card" style="width: 15rem;">
+          <img class="card-img-top" src="" id="img5" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Prompt: <span id="prompt5"></span></h5>
+            <h4>Guess: <span id="guess5"></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div hidden>
+    <button id = "train" >Train</button>
+            <button id = "fiveTrain">Train for 5</button>
+            
+            <button id = "guess">Guess</button>
+            <button id = "test">Test</button>
+            <button id = "promptbutton">New Prompt</button>
+            <p class="para">Your prompt is: <span id="drawprompt" class="prompt"></span></p>
+    
+    <div class="col-sm" >
+        
+    </div>
+    <div class="col-sm">
+        <p class="para">My guess is: <span id="guessed" class="prompt"></span></p>
+        <p class="para">Result:<span id="result" class="prompt"></span></p>
+        <p class="para">Trained for:<span id="trained"></spain></p>
+        <p class="para">Percentage correct:<span id="tested"></span></p>
+    </div>
+    </div>
+</body>
+
+</html>
