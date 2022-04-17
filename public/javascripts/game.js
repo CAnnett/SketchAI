@@ -21,11 +21,14 @@ async function newPrompt(gamePrompts){
 let guesses = [];
 let inputs = [];
 let bwuh = [];
+let images = [];
+let imageList = [];
 let j = 0;
 
 async function guessSketch(){
     let imageBase64String = c.elt.toDataURL();
     bwuh.push(imageBase64String);
+
     let img = get();
     console.log(img);
     img.resize(28,28);
@@ -60,9 +63,18 @@ async function guessSketch(){
         gameEnd();
     }
 }
-
+async function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+}
 
 async function gameEnd() {
+    // on button press, supply with number, send one at a time
+
     var gamediv = document.getElementById("mainGame");
     gamediv.style.display = "none";
 
@@ -85,8 +97,23 @@ async function gameEnd() {
     document.getElementById("guess3").innerHTML = guesses[2];
     document.getElementById("guess4").innerHTML = guesses[3];
     document.getElementById("guess5").innerHTML = guesses[4];
+}
 
+async function saveImages(prompt, j){
+    $.ajax({
+        url: '/getarray',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({"image": bwuh[j]})
+    })
 
+        let promptData = prompt[j];
+        $.post(
+            "http://localhost:3000/game/1/" + promptData,
+            function(data) {
+            }
+        );
+        
 }
 
 
