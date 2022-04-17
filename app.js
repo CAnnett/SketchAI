@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
@@ -19,7 +20,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gameRouter = require('./routes/gameRoute');
 var testRouter = require('./routes/testRoute');
-var queryRouter = require('./routes/queryRoute.js');
 
 var app = express();
 
@@ -69,7 +69,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/game', gameRouter);
 app.use('/test', testRouter);
-//app.use('/game/', queryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

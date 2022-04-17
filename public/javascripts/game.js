@@ -20,14 +20,12 @@ async function newPrompt(gamePrompts){
 
 let guesses = [];
 let inputs = [];
-let bwuh = [];
-let images = [];
-let imageList = [];
+let basedImages = [];
 let j = 0;
 
 async function guessSketch(){
     let imageBase64String = c.elt.toDataURL();
-    bwuh.push(imageBase64String);
+    basedImages.push(imageBase64String);
 
     let img = get();
     console.log(img);
@@ -63,17 +61,9 @@ async function guessSketch(){
         gameEnd();
     }
 }
-async function dataURLtoFile(dataurl, filename) {
-    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, {type:mime});
-}
+
 
 async function gameEnd() {
-    // on button press, supply with number, send one at a time
 
     var gamediv = document.getElementById("mainGame");
     gamediv.style.display = "none";
@@ -81,11 +71,11 @@ async function gameEnd() {
     var results = document.getElementById("afterGame");
     results.style.display = "block";
 
-    document.getElementById("img1").src = bwuh[0];
-    document.getElementById("img2").src = bwuh[1];
-    document.getElementById("img3").src = bwuh[2];
-    document.getElementById("img4").src = bwuh[3];
-    document.getElementById("img5").src = bwuh[4];
+    document.getElementById("img1").src = basedImages[0];
+    document.getElementById("img2").src = basedImages[1];
+    document.getElementById("img3").src = basedImages[2];
+    document.getElementById("img4").src = basedImages[3];
+    document.getElementById("img5").src = basedImages[4];
     document.getElementById("prompt1").innerHTML = gamePrompts[0];
     document.getElementById("prompt2").innerHTML = gamePrompts[1];
     document.getElementById("prompt3").innerHTML = gamePrompts[2];
@@ -104,7 +94,7 @@ async function saveImages(prompt, j){
         url: '/getarray',
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({"image": bwuh[j]})
+        data: JSON.stringify({"image": basedImages[j]})
     })
 
         let promptData = prompt[j];
