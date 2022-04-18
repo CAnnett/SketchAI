@@ -44,3 +44,7 @@ button:hover{
   border-radius: 2em;
   padding:0.1em 0.5em;
 }
+
+.reminder{
+  color: rgb(218, 38, 38)
+}

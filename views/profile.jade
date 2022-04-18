@@ -1,0 +1,64 @@
+doctype html
+html(lang='')
+  head
+    meta(charset='utf-8')
+    |         
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |         
+    title SketchAI
+    |         
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    |         
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    |         
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+    script(username = localStorage.getItem('username'))
+    // CSS only
+    //
+      <script src="libraries/p5.js"></script>
+      <script src="../addons/p5.sound.js"></script>
+  |    
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='/') SketchAI
+      |           
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      |         
+      |           
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          |               
+          li.nav-item
+            a.nav-link(href='#') Play
+          |               
+          li.nav-item
+            a.nav-link(href='/test') Test
+    |         
+    p
+    |         
+    .container(style='background-color: rgb(241, 242, 250);')
+      .row
+        .col-12
+          h1= username
+    |         
+    p
+    |         
+    .container
+      .row
+      each val in images
+        .col-sm-4
+          .card         
+            .card-body
+              h5.card-title
+                | Prompt: 
+                h4=val.prompt
+              |             
+              h4
+                img.doodle#Doodle(src=val.image alt="Image Title" style="width:280px; height:280px;")
+
+          

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SketchAI</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <script> 
+            function saveStorage(){
+            let username = document.querySelector('input[name="username"]').value;
+            localStorage.setItem('username', username);
+            }
+        </script>
+      </head>   
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">SketchAI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <p></p>
+
+        <div class="container" id="login">
+            <div class="row">
+            <div class="col-6">
+                <div class="login">
+                    <h1>Login</h1>
+                    <form action="/authLogin" method="post">
+                        <div class="form-floating mb-3">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Username" id="username" required>
+                        </div>
+                        <div class="form-floating">
+                            <label for="floatingPassword">Password</label>
+                            <input type="password"class="form-control" name="password" placeholder="Password" id="password" required>
+                        </div>
+                        <p></p>
+                        <div>
+                            <button type="submit"class="btn btn-primary" onClick="saveStorage()" value="Login">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="register">
+                    <h1>Register</h1>
+                    <form action="/authRegister" method="post">
+                            <div class="form-floating mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username" id="Regusername" required>
+                            </div>
+                            <div class="form-floating">
+                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password" id="Regpassword" required>
+                            </div>
+                            <div class="form-floating">
+                                <label for="floatingPassword">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="email@example.com" id="email" required>
+                            <p></p>
+                            </div>
+                            <button type="submit" class="btn btn-primary"value="Register">Register</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
