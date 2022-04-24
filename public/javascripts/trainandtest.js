@@ -1,5 +1,3 @@
-//Also look into making it asynchronous so it doesn't freeze up the whole site
-
 function softmax(logits) {
     const maxLogit = Math.max(...logits);
     const scores = logits.map(l => Math.exp(l - maxLogit));
@@ -27,7 +25,7 @@ function softmax(logits) {
     }
   
   async function fiveEpochs (training) {
-    for (let i=0; i < 50; i ++){
+    for (let i=0; i < 5; i ++){
         trainEpoch(training);
     }
   }
