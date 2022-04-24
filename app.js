@@ -18,7 +18,6 @@ var sqlite3 = require('sqlite3');
 var db = new sqlite3.Database('./DB/SketchAI.db');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var gameRouter = require('./routes/gameRoute');
 var testRouter = require('./routes/testRoute');
 var loginRouter = require('./routes/loginRoute');
@@ -147,7 +146,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 //app.use('/game', gameRouter);
 app.use('/test', testRouter);
 app.use('/login', loginRouter);
